@@ -1,0 +1,54 @@
+name: Cabal-playground
+version: 0.0.1
+category: Build
+stability: alpha
+maintainer: Shao Cheng <astrohavoc@gmail.com>
+copyright: (c) 2017 Shao Cheng
+license: BSD3
+github: TerrorJack/Cabal-playground
+
+extra-source-files:
+  - README.md
+  - CHANGELOG.md
+
+include-dirs:
+  - cbits
+
+c-sources:
+  - cbits/*.c
+
+custom-setup:
+  dependencies:
+    - base
+    - Cabal
+    - fast-logger
+    - pretty-show
+
+ghc-options: -Wall
+
+dependencies:
+  - base >= 4.9 && < 4.10
+
+library:
+  source-dirs: src
+
+executables:
+  app:
+    source-dirs: app
+    main: Main.hs
+    dependencies:
+      - Cabal-playground
+
+tests:
+  test:
+    source-dirs: test
+    main: Main.hs
+    dependencies:
+      - Cabal-playground
+
+benchmarks:
+  bench:
+    source-dirs: bench
+    main: Main.hs
+    dependencies:
+      - Cabal-playground
